@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>TAJ Medical and General Store</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      background: #f8f8f8;
+
+    }
+
+    header {
+
+      background-color: #6a1b9a;
+
+      color: white;
+
+      padding: 20px;
+
+      position: relative;
+
+      text-align: center;
+
+    }
+
+    header img {
+
+      position: absolute;
+
+      top: 15px;
+
+      left: 20px;
+
+      width: 60px;
+
+      height: 60px;
+
+      border-radius: 50%;
+
+    }
+
+    .menu-icon {
+
+      position: absolute;
+
+      top: 20px;
+
+      right: 20px;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+    }
+
+    nav {
+
+      background-color: #4a148c;
+
+      text-align: center;
+
+      padding: 10px;
+
+    }
+
+    nav a {
+
+      color: white;
+
+      margin: 0 20px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+    }
+
+    .sidebar {
+
+      position: fixed;
+
+      top: 0;
+
+      right: -250px;
+
+      width: 250px;
+
+      height: 100%;
+
+      background-color: #4a148c;
+
+      color: white;
+
+      transition: right 0.3s;
+
+      padding-top: 60px;
+
+      z-index: 999;
+
+    }
+
+    .sidebar a {
+
+      display: block;
+
+      padding: 15px;
+
+      font-size: 18px;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+    }
+
+    .sidebar a:hover {
+
+      background-color: #6a1b9a;
+
+    }
+
+    .container {
+
+      padding: 20px;
+
+    }
+
+    section {
+
+      margin-bottom: 50px;
+
+    }
+
+    h2 {
+
+      color: #333;
+
+    }
+
+    .highlight {
+
+      color: #6a1b9a;
+
+      font-weight: bold;
+
+    }
+
+    .contact-box {
+
+      background: #ede7f6;
+
+      padding: 10px;
+
+      border-radius: 5px;
+
+    }
+
+    iframe {
+
+      width: 100%;
+
+      height: 300px;
+
+      border: none;
+
+    }
+
+    .item-image {
+
+      max-width: 100%;
+
+      height: auto;
+
+      margin: 10px 0;
+
+    }
+
+    input, textarea, select {
+
+      width: 95%;
+
+      padding: 10px;
+
+      margin: 8px 0;
+
+      font-size: 16px;
+
+    }
+
+    button {
+
+      padding: 10px 20px;
+
+      font-size: 16px;
+
+      background-color: #6a1b9a;
+
+      color: white;
+
+      border: none;
+
+      cursor: pointer;
+
+    }
+
+    footer {
+
+      background-color: #6a1b9a;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 15px;
+
+    }
+
+    .item-card {
+
+      background: white;
+
+      padding: 10px;
+
+      margin: 10px 0;
+
+      border-left: 4px solid #6a1b9a;
+
+    }
+
+    .message {
+
+      background-color: #6a1b9a;
+
+      color: white;
+
+      padding: 10px;
+
+      margin: 10px 0;
+
+      border-radius: 5px;
+
+      display: none;
+
+    }
+
+    .filter-section {
+
+      margin: 20px 0;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <img src="logo.png" alt="Logo">
+
+    <h1>TAJ Medical and General Store</h1>
+
+    <p>We provide high-quality medicines and healthcare essentials!</p>
+
+    <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
+
+  </header>
+
+  <nav>
+
+    <a href="javascript:void(0)" onclick="showSection('about')">About</a>
+
+    <a href="javascript:void(0)" onclick="showSection('services')">Services</a>
+
+    <a href="javascript:void(0)" onclick="showSection('contact')">Contact</a>
+
+  </nav>
+
+  <div id="sidebar" class="sidebar">
+
+    <a href="javascript:void(0)" onclick="showSection('home'); toggleSidebar()">Home</a>
+
+    <a href="javascript:void(0)" onclick="showSection('information'); toggleSidebar()">Information</a>
+
+    <a href="javascript:void(0)" onclick="showSection('login'); toggleSidebar()">Add Items</a>
+
+    <a href="javascript:void(0)" onclick="showSection('view-items'); toggleSidebar()">View Items</a>
+
+  </div>
+
+  <div class="container">
+
+    <section id="about" style="display: none;">
+
+      <h2>About Us</h2>
+
+      <p><span class="highlight">Owner:</span> M Pervaiz</p>
+
+      <p><span class="highlight">Address:</span> Chak no. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
+
+      <p><span class="highlight">Store Hours:</span> Mon–Sun, 6AM–10PM</p>
+
+      <h3 class="highlight">Clinic Timings</h3>
+
+      <ul>
+
+        <li><strong>99 GB:</strong> 6AM–3PM & 7:30PM–10PM</li>
+
+        <li><strong>98 GB:</strong> 3:30PM–7PM</li>
+
+      </ul>
+
+      <h3>Sample Images</h3>
+
+      <img src="sample1.jpg" class="item-image" alt="Sample1">
+
+      <img src="sample2.jpg" class="item-image" alt="Sample2">
+
+      <img src="sample3.jpg" class="item-image" alt="Sample3">
+
+      <img src="sample4.jpg" class="item-image" alt="Sample4">
+
+      <h3>Sample Videos</h3>
+
+      <video controls class="item-image">
+
+        <source src="video1.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+
+      </video>
+
+      <video controls class="item-image">
+
+        <source src="video2.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+
+      </video>
+
+    </section>
+
+    <section id="services" style="display: none;">
+
+      <h2>Our Services</h2>
+
+      <p>We offer a wide range of medical and general products to help you stay healthy and safe.</p>
+
+      <ul>
+
+        <li>Medicines</li>
+
+        <li>Medical Equipment</li>
+
+        <li>Health Consultations</li>
+
+        <li>General Items</li>
+
+      </ul>
+
+    </section>
+
+    <section id="home" style="display: block;">
+
+      <h2>Welcome to TAJ Medical and General Store!</h2>
+
+      <p>Your trusted source for healthcare products.</p>
+
+    </section>
+
+    <section id="contact" style="display: none;">
+
+      <h2>Contact Us</h2>
+
+      <div class="contact-box">
+
+        <p><span class="highlight">Phone:</span> 03437769660</p>
+
+        <p><span class="highlight">Email:</span> mparvaiz.0099@gmail.com</p>
+
+        <p><span class="highlight">Address:</span> Chak no. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
+
+      </div>
+
+      <h3>Our Location</h3>
+
+      <iframe src="https://www.google.com/maps/embed?pb=..." title="Google Map Location"></iframe>
+
+    </section>
+
+    <section id="information" style="display: none;">
+
+      <h2>Information Page</h2>
+
+      <p>Details of items will appear here.</p>
+
+    </section>
+
+    <section id="login" style="display: none;">
+
+      <h2>Login to Add New Item</h2>
+
+      <form id="login-form">
+
+        <input type="text" id="username" placeholder="Username" required />
+
+        <input type="password" id="password" placeholder="Password" required />
+
+        <label>
+
+          <input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password
+
+        </label>
+
+        <button type="button" onclick="login()">Login</button>
+
+      </form>
+
+      <div class="message" id="login-message" style="display: none;">Login successful!</div>
+
+    </section>
+
+    <section id="add-item-form" style="display: none;">
+
+      <h2>Add New Item</h2>
+
+      <form id="item-form">
+
+        <input type="text" id="item-name" placeholder="Item Name" />
+
+        <input type="number" id="item-price" placeholder="Price in Rs" />
+
+        <textarea id="item-desc" placeholder="Description"></textarea>
+
+        <input type="file" id="item-image" />
+
+        <button type="button" onclick="addItem()">Add Item</button>
+
+        <div class="message" id="success-message">Item added successfully!</div>
+
+      </form>
+
+    </section>
+
+    <section id="view-items" style="display: none;">
+
+      <h2>View Items</h2>
+
+      <div class="filter-section">
+
+        <label for="sort-select">Sort by:</label>
+
+        <select id="sort-select">
+
+          <option value="default">Default</option>
+
+          <option value="high-to-low">Price: High to Low</option>
+
+          <option value="low-to-high">Price: Low to High</option>
+
+          <option value="name-asc">Name: A to Z</option>
+
+          <option value="name-desc">Name: Z to A</option>
+
+        </select>
+
+      </div>
+
+      <div id="items-list"></div>
+
+    </section>
+
+  </div>
+
+  <footer>
+
+<!-- The previous <html>...<footer> section remains unchanged -->
+
+<footer>
+
+  <p>&copy; 2025 TAJ Medical and General Store. All rights reserved.</p>
+
+</footer>
+
+<script>
+
+  // Sidebar toggle
+
+  function toggleSidebar() {
+
+    const sidebar = document.getElementById("sidebar");
+
+    sidebar.style.right = sidebar.style.right === "0px" ? "-250px" : "0px";
+
+  }
+
+  // Section switching
+
+  function showSection(sectionId) {
+
+    const sections = document.querySelectorAll("section");
+
+    sections.forEach(sec => sec.style.display = "none");
+
+    document.getElementById(sectionId).style.display = "block";
+
+  }
+
+  // Show password toggle
+
+  function togglePassword() {
+
+    const pwd = document.getElementById("password");
+
+    pwd.type = pwd.type === "password" ? "text" : "password";
+
+  }
+
+  // Login
+
+  function login() {
+
+    const user = document.getElementById("username").value.trim();
+
+    const pass = document.getElementById("password").value.trim();
+
+    if (user === "Taj Medical And General Store" && pass === "tajmedicalstore.00") {
+
+      document.getElementById("login-message").style.display = "block";
+
+      setTimeout(() => {
+
+        showSection("add-item-form");
+
+        document.getElementById("login-form").reset();
+
+        document.getElementById("login-message").style.display = "none";
+
+      }, 1000);
+
+    } else {
+
+      alert("Invalid credentials.");
+
+    }
+
+  }
+
+  // Store items in localStorage
+
+  function getItems() {
+
+    return JSON.parse(localStorage.getItem("storeItems")) || [];
+
+  }
+
+  function saveItems(items) {
+
+    localStorage.setItem("storeItems", JSON.stringify(items));
+
+  }
+
+  // Add Item
+
+  function addItem() {
+
+    const name = document.getElementById("item-name").value;
+
+    const price = document.getElementById("item-price").value;
+
+    const desc = document.getElementById("item-desc").value;
+
+    const imageFile = document.getElementById("item-image").files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+
+      const imageData = imageFile ? e.target.result : "";
+
+      const items = getItems();
+
+      items.push({ name, price, desc, image: imageData });
+
+      saveItems(items);
+
+      document.getElementById("item-form").reset();
+
+      document.getElementById("success-message").style.display = "block";
+
+      setTimeout(() => document.getElementById("success-message").style.display = "none", 2000);
+
+    };
+
+    if (imageFile) reader.readAsDataURL(imageFile);
+
+    else reader.onload();
+
+  }
+
+  // View Items
+
+  function displayItems(sortBy = "default") {
+
+    const items = getItems();
+
+    const list = document.getElementById("items-list");
+
+    if (sortBy === "high-to-low") items.sort((a, b) => b.price - a.price);
+
+    else if (sortBy === "low-to-high") items.sort((a, b) => a.price - b.price);
+
+    else if (sortBy === "name-asc") items.sort((a, b) => a.name.localeCompare(b.name));
+
+    else if (sortBy === "name-desc") items.sort((a, b) => b.name.localeCompare(a.name));
+
+    list.innerHTML = items.map(item => `
+
+      <div class="item-card">
+
+        <h3>${item.name || "(Unnamed)"}</h3>
+
+        <p><strong>Price:</strong> Rs ${item.price || "-"}</p>
+
+        <p>${item.desc || ""}</p>
+
+        ${item.image ? `<img src="${item.image}" class="item-image" alt="Item Image">` : ""}
+
+      </div>
+
+    `).join("");
+
+  }
+
+  document.getElementById("sort-select").addEventListener("change", function () {
+
+    displayItems(this.value);
+
+  });
+
+  // Load View Items when that section is shown
+
+  document.querySelector("a[href*='view-items']").addEventListener("click", () => {
+
+    setTimeout(() => displayItems(document.getElementById("sort-select").value), 300);
+
+  });
+
+</script>
+
+</body>
+
+</html>
