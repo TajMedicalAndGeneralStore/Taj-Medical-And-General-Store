@@ -671,3 +671,55 @@
 </body>
 
 </html>
+<script>
+  // ... existing functions
+
+  // View Items
+  function displayItems(sortBy = "default") {
+    const items = getItems();
+
+    // Sort logic
+    if (sortBy === "high-to-low") {
+      items.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "low-to-high") {
+      items.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "name-asc") {
+      items.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "name-desc") {
+      items.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    const container = document.getElementById("items-list");
+    container.innerHTML = "";
+
+    if (items.length === 0) {
+      container.innerHTML = "<p>No items available.</p>";
+      return;
+    }
+
+    items.forEach(item => {
+      const itemCard = document.createElement("div");
+      itemCard.className = "item-card";
+
+      itemCard.innerHTML = `
+        <h3>${item.name}</h3>
+        <p><strong>Price:</strong> Rs ${item.price}</p>
+        <p><strong>Description:</strong> ${item.desc}</p>
+        ${item.image ? `<img src="${item.image}" class="item-image" alt="${item.name}" />` : ""}
+      `;
+
+      container.appendChild(itemCard);
+    });
+  }
+
+  // Trigger display on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const sortSelect = document.getElementById("sort-select");
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        displayItems(sortSelect.value);
+      });
+    }
+    displayItems();
+  });
+</script>
