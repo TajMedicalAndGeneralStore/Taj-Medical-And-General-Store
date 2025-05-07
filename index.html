@@ -1,725 +1,340 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>TAJ Medical and General Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAJ MEDICAL AND GENERAL STORE</title>
 
   <style>
-
     body {
-
       margin: 0;
-
       font-family: Arial, sans-serif;
-
-      background: #f8f8f8;
-
+      background: #f7f7f7;
     }
-
     header {
-
       background-color: #6a1b9a;
-
       color: white;
-
-      padding: 20px;
-
+      padding: 28px;
       position: relative;
-
       text-align: center;
-
     }
-
     header img {
-
       position: absolute;
-
       top: 15px;
-
       left: 20px;
-
       width: 60px;
-
       height: 60px;
-
       border-radius: 50%;
-
     }
-
     .menu-icon {
-
       position: absolute;
-
       top: 20px;
-
       right: 20px;
-
-      font-size: 30px;
-
+      font-size: 40px;
       cursor: pointer;
-
     }
-
     nav {
-
       background-color: #4a148c;
-
       text-align: center;
-
       padding: 10px;
-
     }
-
     nav a {
-
       color: white;
-
       margin: 0 20px;
-
       text-decoration: none;
-
       font-weight: bold;
-
-      font-size: 16px;
-
+      font-size: 22px;
       cursor: pointer;
-
     }
-
     .sidebar {
-
       position: fixed;
-
       top: 0;
-
       right: -250px;
-
       width: 250px;
-
       height: 100%;
-
       background-color: #4a148c;
-
       color: white;
-
       transition: right 0.3s;
-
       padding-top: 60px;
-
       z-index: 999;
-
     }
-
     .sidebar a {
-
       display: block;
-
       padding: 15px;
-
-      font-size: 18px;
-
+      font-size: 24px;
       color: white;
-
       text-decoration: none;
-
       font-weight: bold;
-
     }
-
     .sidebar a:hover {
-
       background-color: #6a1b9a;
-
     }
-
     .container {
-
       padding: 20px;
-
     }
-
     section {
-
       margin-bottom: 50px;
-
-    }
-
-    h2 {
-
-      color: #333;
-
-    }
-
-    .highlight {
-
-      color: #6a1b9a;
-
-      font-weight: bold;
-
-    }
-
-    .contact-box {
-
-      background: #ede7f6;
-
-      padding: 10px;
-
-      border-radius: 5px;
-
-    }
-
-    iframe {
-
-      width: 100%;
-
-      height: 300px;
-
-      border: none;
-
-    }
-
-    .item-image {
-
-      max-width: 100%;
-
-      height: auto;
-
-      margin: 10px 0;
-
-    }
-
-    input, textarea, select {
-
-      width: 95%;
-
-      padding: 10px;
-
-      margin: 8px 0;
-
-      font-size: 16px;
-
-    }
-
-    button {
-
-      padding: 10px 20px;
-
-      font-size: 16px;
-
-      background-color: #6a1b9a;
-
-      color: white;
-
-      border: none;
-
-      cursor: pointer;
-
-    }
-
-    footer {
-
-      background-color: #6a1b9a;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 15px;
-
-    }
-
-    .item-card {
-
-      background: white;
-
-      padding: 10px;
-
-      margin: 10px 0;
-
-      border-left: 4px solid #6a1b9a;
-
-    }
-
-    .message {
-
-      background-color: #6a1b9a;
-
-      color: white;
-
-      padding: 10px;
-
-      margin: 10px 0;
-
-      border-radius: 5px;
-
       display: none;
-
     }
-
-    .filter-section {
-
-      margin: 20px 0;
-
+    h2, h1 {
+      color: #333;
     }
-
+    .item-card {
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .item-card img {
+      max-width: 100px;
+      max-height: 100px;
+      display: block;
+      margin-top: 10px;
+    }
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filters input {
+      flex: 2;
+      padding: 14px;
+      font-size: 18px;
+    }
+    .filters select {
+      flex: 1;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .centered-login {
+      max-width: 400px;
+      margin: auto;
+    }
+    footer {
+      background-color: #6a1b9a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
   </style>
-
 </head>
-
-<body>
-
+<body onload="showSection('home')">
   <header>
-
     <img src="logo.png" alt="Logo">
-
-    <h1>TAJ Medical and General Store</h1>
-
-    <p>We provide high-quality medicines and healthcare essentials!</p>
-
+    <h1 style="color: white;">TAJ MEDICAL AND GENERAL STORE</h1>
+    <h2>We provide high-quality medicines and healthcare essentials!</p>
     <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
-
   </header>
-
   <nav>
-
     <a href="javascript:void(0)" onclick="showSection('about')">About</a>
-
     <a href="javascript:void(0)" onclick="showSection('services')">Services</a>
-
     <a href="javascript:void(0)" onclick="showSection('contact')">Contact</a>
-
   </nav>
-
   <div id="sidebar" class="sidebar">
-
     <a href="javascript:void(0)" onclick="showSection('home'); toggleSidebar()">Home</a>
-
-    <a href="javascript:void(0)" onclick="showSection('information'); toggleSidebar()">Information</a>
-
-    <a href="javascript:void(0)" onclick="showSection('login'); toggleSidebar()">Add Items</a>
-
+    <a href="javascript:void(0)" onclick="showSection('login'); toggleSidebar()">Add / Update Items</a>
     <a href="javascript:void(0)" onclick="showSection('view-items'); toggleSidebar()">View Items</a>
-
   </div>
-
   <div class="container">
-
-    <section id="about" style="display: none;">
-
-      <h2>About Us</h2>
-
-      <p><span class="highlight">Owner:</span> M Pervaiz</p>
-
-      <p><span class="highlight">Address:</span> Chak no. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
-
-      <p><span class="highlight">Store Hours:</span> Mon–Sun, 6AM–10PM</p>
-
-      <h3 class="highlight">Clinic Timings</h3>
-
-      <ul>
-
-        <li><strong>99 GB:</strong> 6AM–3PM & 7:30PM–10PM</li>
-
-        <li><strong>98 GB:</strong> 3:30PM–7PM</li>
-
-      </ul>
-
-      <h3>Sample Images</h3>
-
-      <img src="sample1.jpg" class="item-image" alt="Sample1">
-
-      <img src="sample2.jpg" class="item-image" alt="Sample2">
-
-      <img src="sample3.jpg" class="item-image" alt="Sample3">
-
-      <img src="sample4.jpg" class="item-image" alt="Sample4">
-
-      <h3>Sample Videos</h3>
-
-      <video controls class="item-image">
-
-        <source src="video1.mp4" type="video/mp4">
-
-        Your browser does not support the video tag.
-
-      </video>
-
-      <video controls class="item-image">
-
-        <source src="video2.mp4" type="video/mp4">
-
-        Your browser does not support the video tag.
-
-      </video>
-
+    <section id="home">
+      <h2>Welcome to TAJ MEDICAL AND GENERAL STORE</h2>
+      <h2>Your health, our priority. Shop now for reliable and trusted products.</p>
+      <p>Feel free to browse our inventory or contact us for personalized assistance.</p>
     </section>
-
-    <section id="services" style="display: none;">
-
+    <section id="about">
+      <h2 style="color:  purple;">About Us</h2>
+      <h2>Owner: Muhammad Pervaiz</p>
+      <p style="color: purple;"2>Store Hours:<p> 6:00 AM – 10:00 PM
+     </p>
+      <p style="color: purple;">Clinic Timing:  
+       <p style="color: purple;"> 99 GB:<p> Morning: 6:00 PM – 3:00 PM
+        <p> Evening : 8:00 PM - 10:00 PM 
+          <p style="color: purple;"> 98 GB: <p> Evening : 3:00 PM - 7:30 PM
+      </p>
+      <p style="color: purple;">Address:<p> Chak No. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
+    </section>
+    <section id="services">
       <h2>Our Services</h2>
-
-      <p>We offer a wide range of medical and general products to help you stay healthy and safe.</p>
-
       <ul>
-
-        <li>Medicines</li>
-
-        <li>Medical Equipment</li>
-
-        <li>Health Consultations</li>
-
-        <li>General Items</li>
-
+        <li>Prescription fulfillment</li>
+        <li>Over-the-counter medicine</li>
+        <li>Health supplements and wellness products</li>
       </ul>
-
     </section>
-
-    <section id="home" style="display: block;">
-
-      <h2>Welcome to TAJ Medical and General Store!</h2>
-
-      <p>Your trusted source for healthcare products.</p>
-
-    </section>
-
-    <section id="contact" style="display: none;">
-
+    <section id="contact">
       <h2>Contact Us</h2>
-
-      <div class="contact-box">
-
-        <p><span class="highlight">Phone:</span> 03437769660 , 03167328419</p>
-
-        <p><span class="highlight">Email:</span> mparvaiz.0099@gmail.com</p>
-
-        <p><span class="highlight">Address:</span> Chak no. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
-
+      <p>Phone: 03437769660 , 03167328419</p>
+      <p>Email: mparvaiz.0099@gmail.com</p>
+      <p>Address: Chak No. 99 GB Nehang Badala, Jaranwala, Faisalabad</p>
+      <iframe src="https://maps.google.com/maps?q=chak%20no.%2099%20gb%20nehang%20badala&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" frameborder="0"></iframe>
+    </section>
+    <section id="login">
+      <h2>Login</h2>
+      <div class="centered-login">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+        <button onclick="login()">Login</button>
       </div>
-
-      <h3>Our Location</h3>
-
-      <iframe src="https://www.google.com/maps/embed?pb=..." title="Google Map Location"></iframe>
-
     </section>
-
-    <section id="information" style="display: none;">
-
-      <h2>Information Page</h2>
-
-      <p>Details of items will appear here.</p>
-
-    </section>
-
-    <section id="login" style="display: none;">
-
-      <h2>Login to Add New Item</h2>
-
-      <form id="login-form">
-
-        <input type="text" id="username" placeholder="Username" required />
-
-        <input type="password" id="password" placeholder="Password" required />
-
-        <label>
-
-          <input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password
-
-        </label>
-
-        <button type="button" onclick="login()">Login</button>
-
-      </form>
-
-      <div class="message" id="login-message" style="display: none;">Login successful!</div>
-
-    </section>
-
-    <section id="add-item-form" style="display: none;">
-
-      <h2>Add New Item</h2>
-
-      <form id="item-form">
-
-        <input type="text" id="item-name" placeholder="Item Name" />
-
-        <input type="number" id="item-price" placeholder="Price in Rs" />
-
-        <textarea id="item-desc" placeholder="Description"></textarea>
-
-        <input type="file" id="item-image" />
-
-        <button type="button" onclick="addItem()">Add Item</button>
-
-        <div class="message" id="success-message">Item added successfully!</div>
-
-      </form>
-
-    </section>
-
-    <section id="view-items" style="display: none;">
-
-      <h2>View Items</h2>
-
-      <div class="filter-section">
-
-        <label for="sort-select">Sort by:</label>
-
-        <select id="sort-select">
-
-          <option value="default">Default</option>
-
-          <option value="high-to-low">Price: High to Low</option>
-
-          <option value="low-to-high">Price: Low to High</option>
-
-          <option value="name-asc">Name: A to Z</option>
-
-          <option value="name-desc">Name: Z to A</option>
-
+    <section id="add-item-form" style="display:none">
+      <h2>Add / Update Item</h2>
+      <form onsubmit="addItem(event)">
+        <input type="text" id="item-name" placeholder="Item Name">
+        <select id="item-category">
+          <option value="">Select Category</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Supplement">Supplement</option>
+          <option value="Equipment">Equipment</option>
+          <option value="Other">Other</option>
         </select>
-
-      </div>
-
-      <div id="items-list"></div>
-
+        <input type="number" id="item-price" placeholder="Price">
+        <input type="file" id="item-image">
+        <textarea id="item-description" placeholder="Description"></textarea>
+        <button type="submit">Submit</button>
+        <p id="success-message"></p>
+      </form>
     </section>
-
-  </div>
-
-  <footer>
-
-<!-- The previous <html>...<footer> section remains unchanged -->
-
-<footer>
-
-  <p>&copy; 2025 TAJ Medical and General Store. All rights reserved.</p>
-
-</footer>
-
-<script>
-
-  // Sidebar toggle
-
-  function toggleSidebar() {
-
-    const sidebar = document.getElementById("sidebar");
-
-    sidebar.style.right = sidebar.style.right === "0px" ? "-250px" : "0px";
-
-  }
-
-  // Section switching
-
-  function showSection(sectionId) {
-
-    const sections = document.querySelectorAll("section");
-
-    sections.forEach(sec => sec.style.display = "none");
-
-    document.getElementById(sectionId).style.display = "block";
-
-  }
-
-  // Show password toggle
-
-  function togglePassword() {
-
-    const pwd = document.getElementById("password");
-
-    pwd.type = pwd.type === "password" ? "text" : "password";
-
-  }
-
-  // Login
-
-  function login() {
-
-    const user = document.getElementById("username").value.trim();
-
-    const pass = document.getElementById("password").value.trim();
-
-    if (user === "Taj Medical And General Store" && pass === "tajmedicalstore.00") {
-
-      document.getElementById("login-message").style.display = "block";
-
-      setTimeout(() => {
-
-        showSection("add-item-form");
-
-        document.getElementById("login-form").reset();
-
-        document.getElementById("login-message").style.display = "none";
-
-      }, 1000);
-
-    } else {
-
-      alert("Invalid credentials.");
-
-    }
-
-  }
-
-  // Store items in localStorage
-
-  function getItems() {
-
-    return JSON.parse(localStorage.getItem("storeItems")) || [];
-
-  }
-
-  function saveItems(items) {
-
-    localStorage.setItem("storeItems", JSON.stringify(items));
-
-  }
-
-  // Add Item
-
-  function addItem() {
-
-    const name = document.getElementById("item-name").value;
-
-    const price = document.getElementById("item-price").value;
-
-    const desc = document.getElementById("item-desc").value;
-
-    const imageFile = document.getElementById("item-image").files[0];
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-
-      const imageData = imageFile ? e.target.result : "";
-
-      const items = getItems();
-
-      items.push({ name, price, desc, image: imageData });
-
-      saveItems(items);
-
-      document.getElementById("item-form").reset();
-
-      document.getElementById("success-message").style.display = "block";
-
-      setTimeout(() => document.getElementById("success-message").style.display = "none", 2000);
-
-    };
-
-    if (imageFile) reader.readAsDataURL(imageFile);
-
-    else reader.onload();
-
-  }
-
-  // View Items
-
-  function displayItems(sortBy = "default") {
-
-    const items = getItems();
-
-    const list = document.getElementById("items-list");
-
-    if (sortBy === "high-to-low") items.sort((a, b) => b.price - a.price);
-
-    else if (sortBy === "low-to-high") items.sort((a, b) => a.price - b.price);
-
-    else if (sortBy === "name-asc") items.sort((a, b) => a.name.localeCompare(b.name));
-
-    else if (sortBy === "name-desc") items.sort((a, b) => b.name.localeCompare(a.name));
-
-    list.innerHTML = items.map(item => `
-
-      <div class="item-card">
-
-        <h3>${item.name || "(Unnamed)"}</h3>
-
-        <p><strong>Price:</strong> Rs ${item.price || "-"}</p>
-
-        <p>${item.desc || ""}</p>
-
-        ${item.image ? `<img src="${item.image}" class="item-image" alt="Item Image">` : ""}
-
+    <section id="view-items">
+      <h2>View Items</h2>
+      <div class="filters">
+        <input type="text" id="search-box" placeholder="Search items..." oninput="filterItems()">
+        <select id="category-filter" onchange="filterItems()">
+          <option value="">All Categories</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Supplement">Supplement</option>
+          <option value="Equipment">Equipment</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="sort-select" onchange="sortItems()">
+          <option value="">Sort By</option>
+          <option value="name">Name</option>
+          <option value="price">Price</option>
+        </select>
       </div>
+      <div id="items-list"></div>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 TAJ Medical and General Store. All rights reserved.</p>
+  </footer>
+  <script>
+    let items = [];
 
-    `).join("");
-
-  }
-
-  document.getElementById("sort-select").addEventListener("change", function () {
-
-    displayItems(this.value);
-
-  });
-
-  // Load View Items when that section is shown
-
-  document.querySelector("a[href*='view-items']").addEventListener("click", () => {
-
-    setTimeout(() => displayItems(document.getElementById("sort-select").value), 300);
-
-  });
-
-</script>
-
-</body>
-
-</html>
-<script>
-  // ... existing functions
-
-  // View Items
-  function displayItems(sortBy = "default") {
-    const items = getItems();
-
-    // Sort logic
-    if (sortBy === "high-to-low") {
-      items.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "low-to-high") {
-      items.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "name-asc") {
-      items.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortBy === "name-desc") {
-      items.sort((a, b) => b.name.localeCompare(a.name));
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.right = sidebar.style.right === '0px' ? '-250px' : '0px';
     }
 
-    const container = document.getElementById("items-list");
-    container.innerHTML = "";
-
-    if (items.length === 0) {
-      container.innerHTML = "<p>No items available.</p>";
-      return;
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'block';
     }
 
-    items.forEach(item => {
-      const itemCard = document.createElement("div");
-      itemCard.className = "item-card";
+    function togglePassword() {
+      const pass = document.getElementById('password');
+      pass.type = pass.type === 'password' ? 'text' : 'password';
+    }
 
-      itemCard.innerHTML = `
-        <h3>${item.name}</h3>
-        <p><strong>Price:</strong> Rs ${item.price}</p>
-        <p><strong>Description:</strong> ${item.desc}</p>
-        ${item.image ? `<img src="${item.image}" class="item-image" alt="${item.name}" />` : ""}
-      `;
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      if (username === 'Taj medical and general store' && password === 'tajmedicalstore.00') {
+        document.getElementById('add-item-form').style.display = 'block';
+        showSection('add-item-form');
+      } else {
+        alert('Invalid credentials');
+      }
+    }
 
-      container.appendChild(itemCard);
-    });
-  }
+    function addItem(event) {
+      event.preventDefault();
+      const name = document.getElementById('item-name').value || 'Unnamed';
+      const category = document.getElementById('item-category').value || 'Uncategorized';
+      const price = document.getElementById('item-price').value || '0';
+      const description = document.getElementById('item-description').value || 'No description';
+      const image = document.getElementById('item-image').files[0];
+      const imageUrl = image ? URL.createObjectURL(image) : '';
 
-  // Trigger display on page load
-  document.addEventListener("DOMContentLoaded", () => {
-    const sortSelect = document.getElementById("sort-select");
-    if (sortSelect) {
-      sortSelect.addEventListener("change", () => {
-        displayItems(sortSelect.value);
+      // Check if the item with the same name already exists
+      const existingItemIndex = items.findIndex(item => item.name.toLowerCase() === name.toLowerCase());
+      
+      if (existingItemIndex !== -1) {
+        // Item exists, update the price and other details
+        items[existingItemIndex].price = price;
+        items[existingItemIndex].category = category;
+        items[existingItemIndex].description = description;
+        items[existingItemIndex].imageUrl = imageUrl; // Update image if a new one is provided
+        document.getElementById('success-message').textContent = 'Item updated successfully!';
+      } else {
+        // Item does not exist, add a new one
+        items.push({ name, category, price, description, imageUrl });
+        document.getElementById('success-message').textContent = 'Item added successfully!';
+      }
+
+      displayItems();
+      document.querySelector('#add-item-form form').reset();
+    }
+
+    function filterItems() {
+      const searchQuery = document.getElementById('search-box').value.toLowerCase();
+      const categoryFilter = document.getElementById('category-filter').value;
+      const filteredItems = items.filter(item => {
+        const matchesName = item.name.toLowerCase().includes(searchQuery);
+        const matchesCategory = categoryFilter ? item.category === categoryFilter : true;
+        return matchesName && matchesCategory;
+      });
+      displayItems(filteredItems);
+    }
+
+    function sortItems() {
+      const sortBy = document.getElementById('sort-select').value;
+      const sortedItems = [...items];
+      if (sortBy === 'name') {
+        sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortBy === 'price') {
+        sortedItems.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+      }
+      displayItems(sortedItems);
+    }
+
+    function displayItems(filteredItems = items) {
+      const itemsList = document.getElementById('items-list');
+      itemsList.innerHTML = '';
+      filteredItems.forEach(item => {
+        const itemCard = document.createElement('div');
+        itemCard.classList.add('item-card');
+        itemCard.innerHTML = `
+          <h3>${item.name}</h3>
+          <p><strong>Category:</strong> ${item.category}</p>
+          <p><strong>Price:</strong> ${item.price}</p>
+          <p><strong>Description:</strong> ${item.description}</p>
+          ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}">` : ''}
+        `;
+        itemsList.appendChild(itemCard);
       });
     }
-    displayItems();
-  });
-</script>
+  </script>
+</body>
+</html>
+
