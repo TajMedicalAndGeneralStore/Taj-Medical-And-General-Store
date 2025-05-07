@@ -352,3 +352,98 @@
   </script>
 </body>
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginContainer = document.getElementById("loginContainer");
+    const itemFormContainer = document.getElementById("itemFormContainer");
+    const loginButton = document.getElementById("loginButton");
+    const addItemForm = document.getElementById("addItemForm");
+    const successMessage = document.getElementById("successMessage");
+    const togglePassword = document.getElementById("togglePassword");
+
+    const correctUsername = "Taj Medical And General Store";
+    const correctPassword = "tajmedicalstore.00";
+
+    loginButton.addEventListener("click", function () {
+      const enteredUsername = document.getElementById("username").value;
+      const enteredPassword = document.getElementById("password").value;
+
+      if (
+        enteredUsername === correctUsername &&
+        enteredPassword === correctPassword
+      ) {
+        loginContainer.style.display = "none";
+        itemFormContainer.style.display = "block";
+      } else {
+        alert("Invalid username or password");
+      }
+    });
+
+    togglePassword.addEventListener("click", function () {
+      const passwordInput = document.getElementById("password");
+      const type =
+        passwordInput.getAttribute("type") === "password"
+          ? "text"
+          : "password";
+      passwordInput.setAttribute("type", type);
+      togglePassword.textContent =
+        type === "password" ? "Show Password" : "Hide Password";
+    });
+
+    addItemForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const itemName = document.getElementById("itemName").value;
+      const itemPrice = document.getElementById("itemPrice").value;
+      const itemDescription = document.getElementById("itemDescription").value;
+      const itemImage = document.getElementById("itemImage").files[0];
+
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        const imageData = reader.result;
+
+        const newItem = {
+          name: itemName,
+          price: itemPrice,
+          description: itemDescription,
+          image: imageData,
+        };
+
+        // Save to localStorage
+        const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+        storedItems.push(newItem);
+        localStorage.setItem("items", JSON.stringify(storedItems));
+
+        successMessage.style.display = "block";
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 3000);
+
+        addItemForm.reset();
+      };
+
+      if (itemImage) {
+        reader.readAsDataURL(itemImage);
+      } else {
+        // Handle case without image
+        const newItem = {
+          name: itemName,
+          price: itemPrice,
+          description: itemDescription,
+          image: "", // Empty
+        };
+        const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+        storedItems.push(newItem);
+        localStorage.setItem("items", JSON.stringify(storedItems));
+
+        successMessage.style.display = "block";
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 3000);
+
+        addItemForm.reset();
+      }
+    });
+  });
+</script>
